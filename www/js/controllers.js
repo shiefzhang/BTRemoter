@@ -1,14 +1,14 @@
 angular.module('BTRemoter.controllers', [])
 
   // 遥控主页
-  .controller('RemoteCtrl', function ($scope, $state, devices) {
+  .controller('RemoteCtrl', function ($scope, $state, devicesService) {
     // Get all data from the database.
-    //devicesService.getAllDevices()
-    //  .then(function (devices) {
-    //    //$scope.test = devices;
-    //    $scope.dbDevices = devices;
-    //  });
-    $scope.dbDevices = devices;
+    devicesService.getAllDevices()
+      .then(function (devices) {
+        //$scope.test = devices;
+        $scope.dbDevices = devices;
+      });
+    //$scope.dbDevices = devices;
 
     // 显示遥控详细画面
     $scope.toDetail = function (device_id) {

@@ -57,11 +57,11 @@ angular.module('BTRemoter', ['ionic', 'BTRemoter.controllers', 'BTRemoter.servic
       .state('tab.remote', {
         url: '/remote',
         cache: false,
-        resolve: {
-          devices: function (devicesService) {
-            return (devicesService.getAllDevices());
-          }
-        },
+        //resolve: {
+        //  devices: function (devicesService) {
+        //    return (devicesService.getAllDevices());
+        //  }
+        //},
         views: {
           'tab-remote': {
             templateUrl: 'templates/tab-remote.html',
@@ -110,6 +110,6 @@ angular.module('BTRemoter', ['ionic', 'BTRemoter.controllers', 'BTRemoter.servic
       });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/tab/remote');
+    $urlRouterProvider.otherwise('/tab/setting');
 
   });
