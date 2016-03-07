@@ -11,7 +11,11 @@ angular.module('BTRemoter.controllers', [])
 
     // 显示遥控详细画面
     $scope.toDetail = function (device_id) {
-      $state.go('tab.remote-detail', {'deviceId': device_id});
+      try {
+        $state.go('tab.remote-detail', {'deviceId': device_id});
+      } catch (e){
+        alert(e);
+      }
     };
     //$scope.deleteDevice = function (device_id) {
     //  $scope.test = devicesService.deleteDeviceById(device_id);

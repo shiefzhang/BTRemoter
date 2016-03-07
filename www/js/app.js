@@ -56,7 +56,7 @@ angular.module('BTRemoter', ['ionic', 'BTRemoter.controllers', 'BTRemoter.servic
 
       .state('tab.remote', {
         url: '/remote',
-        cache:false,
+        cache: false,
         views: {
           'tab-remote': {
             templateUrl: 'templates/tab-remote.html',
