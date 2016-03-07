@@ -1,0 +1,27 @@
+<ion-view view-title="遥控">
+  <ion-content scroll="true">
+    <ion-list>
+      <ion-item class="item item-icon-right"
+                ng-repeat="device_row in dbDevices track by $index"
+                ng-click="toDetail(device_row.device_id)"
+      >
+        <div class="row" style="padding: 2px">
+          <div class="col col-10">{{ device_row.type_id }}</div>
+          <div class="col col-20">{{ device_row.device_id }}</div>
+          <div class="col col-30">{{ device_row.device_name }}</div>
+          <div class="col col-25">{{ device_row.vendor }}</div>
+          <div class="col col-10">{{ device_row.version }}</div>
+        </div>
+        <!--
+        <ion-option-button class="button-assertive" ng-click="deleteDevice(device_row.device_id)">
+          Delete
+        </ion-option-button>
+        -->
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+    <div class="item">
+      <pre ng-bind="test | json"></pre>
+    </div>
+  </ion-content>
+</ion-view>

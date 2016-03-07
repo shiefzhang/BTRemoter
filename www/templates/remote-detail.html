@@ -1,0 +1,38 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view hide-nav-bar="false">
+  <ion-content scroll="false">
+    <div class="tabs tabs-top">
+      <button class="tab-item button button-balanced">读 取</button>
+      <button class="tab-item button button-positive ">发 送</button>
+    </div>
+    <div class="scroll-content has-tabs-top">
+      <ion-scroll style="height: 100%">
+        <ion-list>
+          <ion-item style="padding: 0 10px 0 10px"
+                    ng-repeat="param_row in dbParams | filter:filterByType track by $index"
+                    ng-form="param_form"
+          >
+            <div class="row" style="padding: 2px">
+              <div class="col col-60" ng-bind="param_row.param_desc"></div>
+              <div class="col col-40" ng-bind="param_row.param_no"></div>
+            </div>
+            <div class="row item-input-inset">
+              <div class="col col-60 item-note" ng-bind="param_row.param_range +' ['+param_row.param_init+']'"></div>
+              <div class="col col-40 item-input-wrapper" style="padding: 0">
+                <input type="number" name="param_value" style="padding: 0 10px 0 10px"
+                       ng-model="param_row.param_read"></div>
+            </div>
+          </ion-item>
+        </ion-list>
+        <div class="item">
+          <pre ng-bind="test | json"></pre>
+        </div>
+      </ion-scroll>
+    </div>
+  </ion-content>
+</ion-view>
