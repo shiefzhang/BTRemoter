@@ -58,8 +58,8 @@ angular.module('BTRemoter', ['ionic', 'BTRemoter.controllers', 'BTRemoter.servic
         url: '/remote',
         cache: false,
         resolve: {
-          devices: function ($q, devicesService) {
-            return $q.when(devicesService.getAllDevices());
+          devices: function (devicesService) {
+            return (devicesService.getAllDevices());
           }
         },
         views: {
