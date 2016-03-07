@@ -1,19 +1,20 @@
 angular.module('BTRemoter.controllers', [])
 
   // 遥控主页
-  .controller('RemoteCtrl', function ($scope, $state, devicesService) {
+  .controller('RemoteCtrl', function ($scope, $state, devices) {
     // Get all data from the database.
-    devicesService.getAllDevices()
-      .then(function (devices) {
-        //$scope.test = devices;
-        $scope.dbDevices = devices;
-      });
+    //devicesService.getAllDevices()
+    //  .then(function (devices) {
+    //    //$scope.test = devices;
+    //    $scope.dbDevices = devices;
+    //  });
+    $scope.dbDevices = devices;
 
     // 显示遥控详细画面
     $scope.toDetail = function (device_id) {
       try {
         $state.go('tab.remote-detail', {'deviceId': device_id});
-      } catch (e){
+      } catch (e) {
         alert(e);
       }
     };
@@ -92,7 +93,7 @@ angular.module('BTRemoter.controllers', [])
       });
 
     // 选择设备
-    $scope.selectType = function (device_type, index) {
+    $scope.selectType = function (device_type) {
       // 显示加载动画
       $ionicLoading.show({
         template: 'Loading...'
@@ -136,7 +137,7 @@ angular.module('BTRemoter.controllers', [])
         // 删除内存中相同的数据
         var batchPromise = [];
         var queryList = [];
-        selected.forEach(function (item, index) {
+        selected.forEach(function (item) {
           batchPromise.push(devicesService.deleteDeviceById(item.device_id));
           batchPromise.push(paramsService.deleteParamById(item.device_id));
 
@@ -200,11 +201,11 @@ angular.module('BTRemoter.controllers', [])
     // 清除数据
     $scope.dropDB = function () {
       var cleanDevices = devicesService.dropDB()
-        .then(function (respond) {
+        .then(function () {
           return $q.when(devicesService.initDB());
         });
       var cleanParams = paramsService.dropDB()
-        .then(function (respond) {
+        .then(function () {
           return $q.when(paramsService.initDB());
         });
 
