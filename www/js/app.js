@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('BTRemoter', ['ionic', 'BTRemoter.controllers', 'BTRemoter.services'])
+angular.module('BTRemoter', ['ionic', 'ngCordova', 'BTRemoter.controllers', 'BTRemoter.services'])
 
   .run(function ($ionicPlatform, devicesService, paramsService) {
     $ionicPlatform.ready(function () {
@@ -110,6 +110,6 @@ angular.module('BTRemoter', ['ionic', 'BTRemoter.controllers', 'BTRemoter.servic
       });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/tab/setting');
+    $urlRouterProvider.otherwise('/tab/remote');
 
   });

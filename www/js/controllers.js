@@ -1,12 +1,20 @@
 angular.module('BTRemoter.controllers', [])
 
   // 遥控主页
-  .controller('RemoteCtrl', function ($scope, $state, devicesService) {
+  .controller('RemoteCtrl', function ($scope, $rootScope, $state, $ionicLoading, devicesService) {
+    // 显示加载动画
+    $ionicLoading.show({
+      template: 'Loading...'
+    });
     // Get all data from the database.
     devicesService.getAllDevices()
       .then(function (devices) {
         //$scope.test = devices;
         $scope.dbDevices = devices;
+      })
+      .finally(function () {
+        $ionicLoading.hide();
+        //$rootScope.$digest();
       });
     //$scope.dbDevices = devices;
 
@@ -180,7 +188,12 @@ angular.module('BTRemoter.controllers', [])
 
     // 显示左侧菜单
     $scope.toggleLeftMenu = function () {
-      $ionicSideMenuDelegate.toggleLeft();
+      try {
+        $ionicSideMenuDelegate.toggleLeft();
+      }
+      catch (e) {
+        alert(e);
+      }
     };
 
 
